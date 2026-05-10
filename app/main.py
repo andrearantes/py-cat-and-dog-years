@@ -1,21 +1,25 @@
 def get_human_age(cat_age: int, dog_age: int) -> list:
+    if cat_age < 0 or dog_age < 0 or cat_age >= 200 or dog_age >= 200:
+        raise ValueError
 
-    def cat_age_to_human(cat_age: int) -> int:
+    cat = 0
+    dog = 0
 
-        if cat_age > 24:
-            return ((cat_age - 24) // 4) + 2
-        elif cat_age == 24:
-            return 2
-        else:
-            return 0 if cat_age < 15 else 1
+    if cat_age < 15:
+        pass
 
-    def dog_age_to_human(dog_age: int) -> int:
+    elif cat_age < 24:
+        cat = 1
 
-        if dog_age > 29:
-            return ((dog_age - 29) // 5) + 2
-        elif dog_age >= 24:
-            return 2
-        else:
-            return 0 if dog_age < 15 else 1
+    else:
+        cat = 2 + (cat_age - 24) // 4
 
-    return [cat_age_to_human(cat_age), dog_age_to_human(dog_age)]
+    if dog_age < 15:
+        pass
+
+    elif dog_age < 24:
+        dog = 1
+    else:
+        dog = 2 + (dog_age - 24) // 5
+
+    return [cat, dog]
